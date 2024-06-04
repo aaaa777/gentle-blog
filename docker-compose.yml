@@ -1,0 +1,35 @@
+version: "3"
+services:
+  wordpress:
+    image: wordpress:php8.3-apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/local/apache2/htdocs
+    environment:
+      WORDPRESS_DB_HOST: db-mysql
+      WORDPRESS_DB_NAME: "{MYSQL_DATABASE}"
+      WORDPRESS_DB_USER: "{MYSQL_USER}"
+      WORDPRESS_DB_PASSWORD: "{MYSQL_PASSWORD}"
+      WORDPRESS_TABLE_PREFIX: "{WORDPRESS_TABLE_PREFIX}"
+      WORDPRESS_DEBUG: 1
+
+  db-mysql:
+    image: mariadb:11
+    # ports:
+      # - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: "{MYSQL_ROOT_PASSWORD}"
+      MARIADB_DATABASE: "{MYSQL_DATABASE}"
+      MARIADB_USER: "{MYSQL_USER}"
+      MARIADB_PASSWORD: "{MYSQL_PASSWORD}"
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "127.0.0.1:8080:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: "{MYSQL_ROOT_PASSWORD}"
