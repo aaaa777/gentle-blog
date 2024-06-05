@@ -4,7 +4,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./data/html:/usr/local/apache2/htdocs
+      - ./data/html:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_NAME: "{MYSQL_DATABASE}"
