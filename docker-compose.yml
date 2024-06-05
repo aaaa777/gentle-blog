@@ -11,7 +11,7 @@ services:
       WORDPRESS_DB_USER: "{MYSQL_USER}"
       WORDPRESS_DB_PASSWORD: "{MYSQL_PASSWORD}"
       WORDPRESS_TABLE_PREFIX: "wp_"
-      WORDPRESS_DEBUG: 1
+      # WORDPRESS_DEBUG: 1
 
   mysql:
     image: mariadb:11
