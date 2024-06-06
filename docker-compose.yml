@@ -5,6 +5,9 @@ services:
       - "80:80"
     volumes:
       - ./data/html:/var/www/html
+      - type: bind
+        source: "./configs/php/php.ini"
+        target: "/usr/local/etc/php/php.ini"
     environment:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_NAME: "{MYSQL_DATABASE}"
