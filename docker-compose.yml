@@ -8,6 +8,9 @@ services:
       - type: bind
         source: "./configs/php/php.ini"
         target: "/usr/local/etc/php/php.ini"
+      - type: bind
+        source: "./configs/apache/apache.conf"
+        target: "/etc/apache2/conf-enabled/gentle-blog.conf"
     environment:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_NAME: "{MYSQL_DATABASE}"
